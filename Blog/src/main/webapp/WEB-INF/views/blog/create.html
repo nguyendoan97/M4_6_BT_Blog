@@ -83,7 +83,7 @@
             </tr>
             <tr>
                 <td>Date:</td>
-                <td><input type="date" th:field="*{datecreate}" th:value="*{datecreate}"/></td>
+                <td><input type="text" th:field="*{datecreate}" th:value="*{datecreate}"/></td>
             </tr>
             <tr>
                 <td>Post:</td>
@@ -97,7 +97,7 @@
                 <td>Province:</td>
                 <td>
                     <select th:field="*{account}">
-                        <option th:each="p : ${accounts}" th:value="${p.id}" th:text="${p.username}"></option>
+                        <option th:each="p : ${accounts}" th:value="${p.getId()}" th:text="${p.getUsername()}"></option>
                     </select>
                 </td>
             </tr>

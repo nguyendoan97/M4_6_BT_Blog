@@ -2,8 +2,9 @@ package com.codegym.model;
 
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "accounts")
@@ -11,7 +12,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String username;
     private String password;
     private String fullname;
@@ -20,13 +21,13 @@ public class Account {
     private String email;
 
     @OneToMany(mappedBy = "account")
-    private List<Blog> listPosts;
+    private Set<Blog> listPosts;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,5 +77,13 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Blog> getListPosts() {
+        return listPosts;
+    }
+
+    public void setListPosts(Set<Blog> listPosts) {
+        this.listPosts = listPosts;
     }
 }

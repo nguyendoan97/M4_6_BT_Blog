@@ -1,5 +1,6 @@
 package com.codegym;
 
+import com.codegym.filter.CharacterSetFilter;
 import com.codegym.service.AccountService;
 import com.codegym.service.AccountServiceImpl;
 import com.codegym.service.BlogService;
@@ -21,6 +22,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.TemplateEngine;
@@ -31,6 +33,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.Filter;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -107,7 +110,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/casestudy");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/casestudy?characterEncoding=utf8");
         dataSource.setUsername( "root" );
         dataSource.setPassword( "123456" );
         return dataSource;
@@ -126,6 +129,18 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
+
+    @Bean
+    public Filter CharacterSetFilter(){
+        return new CharacterSetFilter();
+    }
+
+//    @Bean
+//    public ViewResolver viewResolver() {
+//        // ...
+//        viewResolver.setCharacterEncoding("UTF-8");
+//        return viewResolver;
+//    }
 
 //    @Override
 //    public void addFormatters(FormatterRegistry registry) {

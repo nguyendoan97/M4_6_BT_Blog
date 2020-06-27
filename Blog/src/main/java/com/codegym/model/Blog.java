@@ -2,6 +2,7 @@ package com.codegym.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 
 @Entity
@@ -9,9 +10,9 @@ import java.sql.Date;
 public class Blog {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String title;
-    private long datecreate = System.currentTimeMillis();
+    private Timestamp datecreate = new Timestamp(System.currentTimeMillis());
     private String content;
     private String author;
 
@@ -20,11 +21,11 @@ public class Blog {
     private Account account;
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,11 +37,11 @@ public class Blog {
         this.title = title;
     }
 
-    public long getDatecreate() {
+    public Timestamp getDatecreate() {
         return datecreate;
     }
 
-    public void setDatecreate(long datecreate) {
+    public void setDatecreate(Timestamp datecreate) {
         this.datecreate = datecreate;
     }
 

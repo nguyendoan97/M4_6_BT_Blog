@@ -98,9 +98,9 @@
         <td th:text="${row.getDatecreate()}"></td>
         <td th:text="${row.getContent()}"></td>
         <td th:text="${row.getAuthor()}"></td>
-        <td th:text="${row.account.username}"></td>
-        <td><a th:href="@{/blog/edit/__${row.id}__ }">Edit</a></td>
-        <td><a th:href="@{/blog/delete/__${row.id}__ }">Delete</a></td>
+        <td th:text="${row.account.getUsername()}"></td>
+        <td><a th:href="@{/blog/__${row.id}__/edit}">Edit</a></td>
+        <td><a th:href="@{/blog/__${row.id}__/delete}">Delete</a></td>
     </tr>
     </tbody>
 </table>
